@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="550.0" prefWidth="850.0" spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.pataverde.controller.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="Registro de pacientes" textFill="#1e293b">
+            <font>
+                <Font name="System Bold" size="22.0" />
+            </font>
+        </Label>
+        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <children>
+                <!-- Formulario de Registro -->
+                <VBox prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <GridPane hgap="10.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="80.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Tipo:" />
+                                <ComboBox fx:id="cmbTipo" prefWidth="200.0" promptText="Seleccione..." GridPane.columnIndex="1" />
+                                <Label text="Nombre:" GridPane.rowIndex="1" />
+                                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label text="Edad:" GridPane.rowIndex="2" />
+                                <TextField fx:id="txtEdad" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label text="Peso (kg):" GridPane.rowIndex="3" />
+                                <TextField fx:id="txtPeso" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            </children>
+                        </GridPane>
+
+                        <!-- Panel Datos del Perro -->
+                        <TitledPane fx:id="panePerro" animated="false" collapsible="false" text="Datos del perro">
+                            <content>
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label text="Raza:" />
+                                                <TextField fx:id="txtRaza" HBox.hgrow="ALWAYS" />
+                                            </children>
+                                        </HBox>
+                                        <CheckBox fx:id="chkVacunado" text="Vacunado" />
+                                        <CheckBox fx:id="chkAdopcion" text="Disponible para adopción" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Panel Datos del Gato -->
+                        <TitledPane fx:id="paneGato" animated="false" collapsible="false" text="Datos del gato">
+                            <content>
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <CheckBox fx:id="chkExterior" text="Vive en exterior" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <HBox alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#handleRegistrar" prefWidth="100.0" text="Registrar" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Tabla y Botón Eliminar -->
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <TableView fx:id="tblMascotas" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colTipo" prefWidth="85.0" text="Tipo" />
+                                <TableColumn fx:id="colNombre" prefWidth="120.0" text="Nombre" />
+                                <TableColumn fx:id="colEdad" prefWidth="60.0" text="Edad" />
+                                <TableColumn fx:id="colPeso" prefWidth="80.0" text="Peso (kg)" />
+                                <TableColumn fx:id="colCosto" prefWidth="110.0" text="Costo consulta" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#handleEliminar" text="Eliminar" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Mensaje de Retroalimentación -->
+        <Label fx:id="lblMensaje" text="" wrapText="true">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+    </children>
+</VBox>
